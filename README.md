@@ -5,20 +5,20 @@
 对于一些复杂且面数多的模型，例如安卡希雅的衣服，上面有很多小饰品，这些小饰品还分很多松散块，这样会占据很多组数，让插件用缝合边划分这些小饰品我觉得没什么意义。<br>
 ![1.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/1.png)<br>
 建议按松散块分离，然后只挑出大块的作为主体，合并后对主体用插件。小饰品之间按需求互相合并，然后可以先放着不管。下图只是展示分离结果，不需要移动。<br>
-![2.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/2.png)
+![2.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/2.png)<br>
 ### 预期组数
 指你希望插件把模型划分成多少份，数字越大越不准确，我建议可以先给个100看看，再进行微调。安卡希雅的衣服主体大概3万个面，我给的120。
 ### 最大组数
 在预览执行过程中如果超过最大组数会停止划分并清除所有缝合边，你可以根据需求设置。Reframework里记录的曙光最大Group编号是254。
 ### 分离预览
 插件会在每次打开blender后第一次使用`分离预览`时尝试打开控制台以显示进度，但是blender提供的`切换系统控制台`非常不好用，如果已经打开了控制台则会关闭。<br>
-![3.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/3.png)
+![3.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/3.png)<br>
 接下来插件会清除模型原来的缝合边，在模型上标记新的缝合边用于第二步的分离。<br>
-![4.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/4.png)
+![4.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/4.png)<br>
 上图可以看到安卡希雅背后的两条带子一大块都没有划分，我想再分细点，可以单独分离出来，单独设置参数，再进行分离预览，最后和主体合并。<br>
-![5.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/5.png)
+![5.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/5.png)<br>
 最后的效果如下。一些标得不好看的缝合边可以自己增删改，确认无误后进行第二步。
-![6.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/6.png)
+![6.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/6.png)<br>
 ## 第二步：确认分离
 选中一个网格，设置一堆参数，然后点击确认分离。
 ### 排序方向
@@ -27,9 +27,9 @@
 反转排序方向。`-X到X`变成`X到-X`，其他同理。
 ### 轴细分
 用来规定模型消失或出现的随机部分。确定好一个排序方向后，可以对剩下两个坐标轴做细分，细分的目标是模型的边界范围。<br>
-![7.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/7.png)
+![7.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/7.png)<br>
 我的排序方向是-Z到Z，XY细分给的2，那么俯视图看起来会像这个样子，和细分一个方块一样。<br>
-![8.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/8.png)
+![8.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/8.png)<br>
 这样边界范围就被划分成了9个区域，[网格组管理脚本](https://www.caimogu.cc/post/1081209.html)在每次触发判定的时候，会在9个区域内随机挑选一个区域，再执行消失或出现。<br>
 ### 重命名
 如果激活的物体已经按照LOD_1_Group_x_Sub_x__xxx的格式命名，插件会自动填写`开始组号`、`材质编号`、`材质名称`。
