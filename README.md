@@ -1,6 +1,14 @@
 # 网格分离助手
 这是一个配合[网格组管理脚本](https://www.caimogu.cc/post/1081209.html)的blender插件，能够帮你把网格拆成许多碎片，用于制作怪猎曙光mod。
 
+插件执行时间可能需要十几秒，为避免造成不可挽回的损失，
+
+**使用前记得存档！**
+
+**使用前记得存档！**
+
+**使用前记得存档！**
+
 ## 第一步：分离预览
 选中一个网格，设置参数，然后点击`分离预览`。插件会用缝合边来标记分离结果。
 
@@ -70,10 +78,13 @@
 ### 5、确定分离
 点击`确定分离`，插件会新建两个集合存放分离结果。
 
+![9.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/9.png)
+
 Split Mesh Result里存放的是带骨架的分离结果，而Split Mesh Loose里存放的是不带骨架的松散块网格。Result里的网格会添加数据传递修改器来消除模型接缝，对象就是Loose里面的网格。数据传递修改器要放在骨架修改器之后，而且不需要应用，除非你知道你在干什么，否则不要动它们。
 
 控制台会输出根据参数生成的Rule，可以直接复制拿走。
 
+![10.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/10.png)
 
 ## 额外
 一些用来修补小问题的额外功能。
@@ -86,5 +97,10 @@ Split Mesh Result里存放的是带骨架的分离结果，而Split Mesh Loose�
 ### 2、重命名
 需要选中至少一个网格。把选中网格按照`开始组号`、`材质编号`、`材质名称`填写的内容进行重命名。
 
-选中安卡希雅衣服前面分离出来的小饰品，换绑骨架之后选中骨架下所有的网格，重命名。
+我还有安卡希雅衣服分离出来的小饰品没有处理，选中它们，换绑骨架。
 
+![11.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/11.png)
+
+选中骨架下所有需要重命名的网格，点击`重命名`。重命名后的Rule会打印在控制台。
+
+![12.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/12.png)
