@@ -97,7 +97,7 @@ class ToolPreferences(bpy.types.AddonPreferences):
     division1: bpy.props.IntProperty(name="Value", default=0)
     division2: bpy.props.IntProperty(name="Value", default=0)
     group_start: bpy.props.IntProperty(name="Group Start", default=1)
-    mat_index: bpy.props.IntProperty(name="Material Index", default=0)
+    mat_index: bpy.props.IntProperty(name="Material Index", default=1)
     mat_name: bpy.props.StringProperty(name="Material Name", default="none")
 
 class SplitPreview(bpy.types.Operator):
