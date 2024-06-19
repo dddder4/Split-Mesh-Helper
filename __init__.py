@@ -416,8 +416,8 @@ class ConfirmPanel(bpy.types.Panel):
         row.prop(pr, "division2")
         row = layout.row()
         row.label(text="Rename")
-        name = context.object.name
-        match_obj = re.match('LOD_[0-9]*_Group_([0-9]*)_Sub_([0-9]*)__(.*)', name)
+        """ name = context.object.name
+        match_obj = re.match('LOD_1_Group_([0-9]*)_Sub_([0-9]*)__(.*)', name)
         if match_obj:
             pr.group_start = int(match_obj.group(1))
             pr.mat_index = int(match_obj.group(2))
@@ -425,7 +425,7 @@ class ConfirmPanel(bpy.types.Panel):
         else:
             pr.group_start = 1
             pr.mat_index = 0
-            pr.mat_name = "none"
+            pr.mat_name = "none" """
         row = layout.row()
         row.prop(pr, "group_start")
         row = layout.row()
