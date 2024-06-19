@@ -35,7 +35,7 @@
 
 ![4.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/4.png)
 
-上图可以看到安卡希雅背后的两条带子一大块都没有划分，我想再分细点，就单独分离出来，单独设置参数，再进行分离预览。
+上图可以看到安卡希雅背后的两条带子一大块都没有划分，我想再分细点，就单独分离出来，单独设置参数，再进行`分离预览`。下图是单独使用`分离预览`后的结果。
 
 ![5.png](https://github.com/dddder4/Split-Mesh-Helper/blob/main/image/5.png)
 
