@@ -182,23 +182,14 @@ class SplitConfirm(bpy.types.Operator):
         bound_box = sorted(bound_box, key = lambda x: x[0] + x[1] + x[2])
         minVector = bound_box[0]
         maxVector = bound_box[-1]
-        """ vectorDis = maxVector - minVector
-        order = int(pr.order)
-        reverse = pr.reverse
-        space = [0, 1, 2]
-        division1 = pr.division1 + 1
-        division2 = pr.division2 + 1
-        group_start = pr.group_start
-        mat_index = pr.mat_index
-        mat_name = pr.mat_name
-        space.remove(order)
-        bb_divide = [[[] for j in range(division2)] for i in range(division1)] """
 
-        context.object.parent.select_set(True)
-
+        parent = context.object.parent
+        hide = parent.hide_get()
+        parent.hide_set(False)
+        parent.select_set(True)
         duplicate()
-        # obj = context.object
         move_to_collection(context, "Split Mesh Result")
+        parent.hide_set(hide)
 
         context.object.parent.select_set(False)
         bpy.ops.object.mode_set(mode='EDIT')
@@ -252,38 +243,6 @@ class SplitConfirm(bpy.types.Operator):
         bpy.data.collections['Split Mesh Loose'].hide_viewport = True
         
         rename(minVector, maxVector, res_objs)
-        """ for res_obj in res_objs:
-            local_bbox_center = 0.125 * sum((Vector(b) for b in res_obj.bound_box), Vector())
-            global_bbox_center = res_obj.matrix_world @ local_bbox_center
-            res_obj['global_bbox_center'] = global_bbox_center
-            bb_divide_index1 = int((global_bbox_center[space[0]] - minVector[space[0]]) * division1 / vectorDis[space[0]])
-            if global_bbox_center[space[0]] == maxVector[space[0]]:
-                bb_divide_index1 -= 1
-            bb_divide_index2 = int((global_bbox_center[space[1]] - minVector[space[1]]) * division2 / vectorDis[space[1]])
-            if global_bbox_center[space[1]] == maxVector[space[1]]:
-                bb_divide_index2 -= 1
-            bb_divide[bb_divide_index1][bb_divide_index2].append(res_obj)
-            
-        #LOD_1_Group_0_Sub_1__leg
-        print("[")
-        for i in bb_divide:
-            for j in i:
-                if len(j) == 0:
-                    continue
-                k = sorted(j, key = lambda x : x['global_bbox_center'][order], reverse = reverse)
-                res_str = "["
-                for sort_obj in k:
-                    name = "LOD_1_Group_" + str(group_start) + "_Sub_" + str(mat_index) + "__" + mat_name
-                    if bpy.data.objects.find(name) != -1:
-                        bpy.data.objects[name].name = name + ".001"
-                    sort_obj.name = name
-                    res_str = res_str + str(group_start) + ", "
-                    group_start += 1
-                res_str = res_str[:-2] + "]"
-                if j != i[-1]:
-                    res_str = res_str + ","
-                print(res_str)
-        print("]") """
         return {"FINISHED"}
 
 class SplitRename(bpy.types.Operator):
