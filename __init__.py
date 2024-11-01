@@ -51,10 +51,12 @@ def rename(minVector, maxVector, objs):
         global_bbox_center = obj.matrix_world @ local_bbox_center
         obj['global_bbox_center'] = global_bbox_center
         bb_divide_index1 = int((global_bbox_center[space[0]] - minVector[space[0]]) * division1 / vectorDis[space[0]])
-        if global_bbox_center[space[0]] == maxVector[space[0]]:
+        #if global_bbox_center[space[0]] == maxVector[space[0]]:
+        if bb_divide_index1 >= division1:
             bb_divide_index1 -= 1
         bb_divide_index2 = int((global_bbox_center[space[1]] - minVector[space[1]]) * division2 / vectorDis[space[1]])
-        if global_bbox_center[space[1]] == maxVector[space[1]]:
+        #if global_bbox_center[space[1]] == maxVector[space[1]]:
+        if bb_divide_index2 >= division2:
             bb_divide_index2 -= 1
         bb_divide[bb_divide_index1][bb_divide_index2].append(obj)
         
